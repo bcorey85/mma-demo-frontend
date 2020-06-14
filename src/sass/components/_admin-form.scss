@@ -1,0 +1,57 @@
+.admin-form__item {
+	margin-left: .8rem;
+	margin-bottom: .8rem;
+}
+
+.admin-form__item-title {
+	margin-bottom: .8rem;
+}
+
+.admin-form__link {
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: .06rem;
+	font-weight: 500;
+	color: var(--gray-dark-2);
+	border: .1rem solid var(--gray-dark-2);
+	padding: .4rem .8rem;
+	text-decoration: none;
+	border-radius: .2rem;
+	font-size: 1.2rem;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.admin-form__link:hover {
+	background-color: var(--gray-dark-2);
+	color: var(--white);
+}
+
+.admin-form__link--delete {
+	color: var(--red-primary);
+	border: 1px solid var(--red-primary);
+}
+.admin-form__link--delete:hover {
+	color: var(--white);
+	background-color: var(--red-primary);
+}
+.admin-form__stats-block {
+	display: flex;
+}
+
+.admin-form__stats-block-item {
+	flex-basis: 100%;
+}
+
+.admin-form__stats-block-heading {
+	margin-top: .8rem;
+	flex-basis: 100%;
+	text-align: center;
+}
+
+.card-form {
+	display: flex;
+	flex-direction: column;
+	flex-flow: wrap;
+	justify-content: space-evenly;
+}

@@ -1,0 +1,39 @@
+.manage-season {
+	&__signup {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__confirm {
+		display: flex;
+		flex-direction: column;
+
+		& label {
+			font-size: 1.6rem;
+		}
+
+		& button {
+			margin-top: 1.6rem;
+		}
+	}
+
+	&__stats {
+		width: 100%;
+
+		&:not(:last-of-type) {
+			margin-bottom: 1.6rem;
+		}
+
+		& th {
+			text-align: left;
+			width: 16.67%;
+		}
+	}
+
+	& h5 {
+		font-size: 1.4rem;
+		text-transform: uppercase;
+	}
+}

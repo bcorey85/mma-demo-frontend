@@ -1,0 +1,29 @@
+.update-user-details {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0 auto;
+
+	& h5 {
+		margin-top: 1.6rem;
+		margin-bottom: .8rem;
+	}
+
+	& label {
+		display: block;
+	}
+
+	& input {
+		width: 100%;
+	}
+
+	& input:not(:last-of-type) {
+		margin-bottom: 1.6rem;
+	}
+
+	& button {
+		margin-top: 3.6rem;
+	}
+}

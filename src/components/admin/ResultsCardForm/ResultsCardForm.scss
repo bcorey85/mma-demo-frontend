@@ -1,0 +1,27 @@
+.results-card-form {
+	display: inline-block;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0;
+	padding: .8rem .8rem 4rem .8rem;
+
+	&__header {
+		font-size: 1.6rem;
+		text-align: center;
+		margin-bottom: .8rem;
+		padding-bottom: .8rem;
+		border-bottom: 2px solid var(--gray-dark);
+	}
+
+	&__result {
+		margin-top: .8rem;
+	}
+
+	&__player-info {
+		display: flex;
+	}
+
+	& input {
+		width: 100%;
+	}
+}

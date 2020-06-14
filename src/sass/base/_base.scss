@@ -1,0 +1,35 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+html {
+	font-size: 62.5%; /* 1rem = 10px */
+	box-sizing: border-box;
+	/* Jumping Scroll Fix */
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: var(--white);
+	color: var(--black);
+	font-size: 1.2rem;
+}
+
+input,
+textarea {
+	padding: .8rem;
+}
+
+td,
+th {
+	padding: .8rem;
+
+	@include respond(675) {
+		padding: .4rem;
+	}
+}
+
+input[disabled] {
+	background-color: var(--gray-light-2);
+	border: .1rem solid var(--gray-light);
+}

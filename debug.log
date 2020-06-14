@@ -1,0 +1,1 @@
+[0613/095744.063:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Brandon\AppData\Local\Google\Chrome\User Data\Crashpad\reports\97227173-6412-4827-a5b0-ca4e0c454274.dmp: The process cannot access the file because it is being used by another process. (0x20)

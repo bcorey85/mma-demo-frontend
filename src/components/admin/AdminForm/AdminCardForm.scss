@@ -1,0 +1,19 @@
+@import '../../../sass/abstracts/mixins';
+
+.admin-card-form {
+	margin: auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	max-width: 84rem;
+	width: 100%;
+	justify-content: space-around;
+
+	@include respond(900) {
+		max-width: 100%;
+	}
+
+	@include respond(675) {
+		display: flex;
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,14 @@
+.num-fights-control {
+	display: flex;
+	align-items: flex-end;
+
+	& input {
+		width: 18rem;
+	}
+
+	& button {
+		height: 2.4rem;
+		margin-bottom: .8rem;
+		margin-left: .8rem;
+	}
+}

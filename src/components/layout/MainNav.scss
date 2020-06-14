@@ -1,0 +1,134 @@
+@import '../../sass/abstracts/mixins';
+
+.nav {
+	&__main {
+		height: 100%;
+		list-style-type: none;
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: 1.6rem;
+		position: relative;
+		transition: all .2s;
+
+		@include respond(675) {
+			display: none;
+		}
+
+		&--open {
+			display: block;
+			text-align: center;
+			background-color: var(--red-primary);
+			position: absolute;
+			top: 7.9rem;
+			left: 0;
+			z-index: 2;
+			width: 100%;
+			height: auto;
+			border-bottom: 2px solid var(--black);
+
+			& .nav__link {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+
+	&__mobile {
+		display: none;
+		height: 8.2rem;
+		width: 3.6rem;
+		z-index: 2;
+		position: relative;
+		margin-right: 1.6rem;
+
+		@include respond(675) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	&__link {
+		text-decoration: none;
+		font-size: 1.6rem;
+		padding: 1.6rem;
+		transition: all .2s;
+		font-weight: 500;
+
+		@include respond(675) {
+			opacity: 0;
+		}
+
+		&:link,
+		&:visited {
+			color: var(--white);
+		}
+
+		&:hover,
+		&:active {
+			color: var(--black);
+		}
+	}
+}
+
+/* Mobile Nav Toggle Classes */
+.nav-toggle {
+	display: inline-block;
+	width: 3.6rem;
+	height: 3.6rem;
+	margin-top: 1.2rem;
+	z-index: 2;
+	border: none;
+	background-color: transparent;
+	position: relative;
+
+	&--middle {
+		display: inline-block;
+		width: 3.6rem;
+		position: absolute;
+		top: 1.2rem;
+		left: 0;
+		transition: all .2s;
+		opacity: 1;
+
+		&,
+		&::before,
+		&::after {
+			background-color: var(--white);
+			width: 3.6rem;
+			height: 2px;
+			display: inline-block;
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			transition: all .2s;
+		}
+
+		&::before {
+			content: "";
+			top: -1rem;
+		}
+
+		&::after {
+			top: 1rem;
+		}
+	}
+
+	&--x &--middle {
+		background-color: transparent;
+	}
+
+	&--x &--middle::before {
+		top: 0;
+		transform: rotate(135deg);
+	}
+
+	&--x &--middle::after {
+		top: 0;
+		transform: rotate(-135deg);
+	}
+}

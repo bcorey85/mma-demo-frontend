@@ -1,0 +1,27 @@
+@import '../../sass/abstracts/mixins';
+
+.fight-card__body {
+	display: flex;
+	justify-content: space-between;
+	padding-top: .8rem;
+
+	&-bids {
+		width: 14rem;
+
+		@include respond(375) {
+			width: 50%;
+		}
+
+		&:first-of-type {
+			@include respond(375) {
+				padding-right: .8rem;
+			}
+		}
+
+		&:last-of-type {
+			@include respond(375) {
+				padding-left: .8rem;
+			}
+		}
+	}
+}

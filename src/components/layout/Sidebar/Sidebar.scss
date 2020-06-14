@@ -1,0 +1,24 @@
+@import '../../../sass/abstracts/mixins';
+
+.sidebar {
+	display: flex;
+	flex: 0 0 24rem;
+	flex-direction: column;
+	margin-left: .8rem;
+
+	@include respond(900) {
+		flex-direction: row;
+		border-top: .2rem solid var(--gray-dark);
+		padding-top: 3.2rem;
+		margin-left: 0;
+		flex: 1 1 auto;
+		align-items: flex-start;
+		justify-content: space-around;
+	}
+
+	@include respond(675) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}

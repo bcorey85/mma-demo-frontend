@@ -1,0 +1,22 @@
+@import '../../sass/abstracts/mixins';
+
+.fight-card {
+	display: inline-block;
+	width: 32rem;
+	// padding: .8rem 0 2.4rem 0;
+	margin-bottom: 8rem;
+
+	@include respond(900) {
+		margin: 0 auto;
+		// padding: .8rem .8rem 2.4rem .8rem;
+		margin-bottom: 4rem;
+	}
+
+	@include respond(675) {
+		// padding: .8rem .8rem 2.4rem .8rem;
+	}
+
+	@include respond(375) {
+		width: 100%;
+	}
+}

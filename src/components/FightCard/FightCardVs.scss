@@ -1,0 +1,12 @@
+@import '../../sass/abstracts/mixins';
+
+.fight-card__vs {
+	font-weight: 600;
+	margin-top: 7rem;
+
+	@include respond(375) {
+		margin-top: 5.6rem;
+		margin-left: .8rem;
+		margin-right: .8rem;
+	}
+}

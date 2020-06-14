@@ -1,0 +1,39 @@
+.message-container {
+	min-height: 2.4rem;
+	width: 100%;
+	padding: 0 .8rem;
+	margin: .8rem 0;
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+
+	&--error {
+		opacity: 1;
+		background-color: var(--red-light);
+		color: var(--red-dark);
+		animation: fade-out 5s;
+	}
+
+	&--success {
+		opacity: 1;
+		background-color: var(--green-light);
+		color: var(--green-dark);
+		animation: fade-out 5s;
+	}
+
+	&--hidden {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	95% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

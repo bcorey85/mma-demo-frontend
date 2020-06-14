@@ -1,0 +1,30 @@
+.ordered-list {
+	font-weight: 600;
+
+	& li {
+		padding-left: 1.6rem;
+
+		&:not(:last-of-type) {
+			margin-bottom: 1.6rem;
+		}
+		& span {
+			font-weight: 400;
+		}
+	}
+
+	&--num {
+		list-style-type: decimal;
+	}
+
+	&--letter {
+		list-style-type: lower-alpha;
+	}
+
+	&--none {
+		list-style-type: none;
+
+		& li {
+			padding-left: 0;
+		}
+	}
+}

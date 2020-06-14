@@ -1,0 +1,90 @@
+@import '../../sass/abstracts/mixins';
+
+.user-dashboard {
+	&__controls {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 1.6rem;
+
+		& button {
+			margin-left: 3.2rem;
+		}
+	}
+
+	&__header {
+		margin-bottom: 4rem;
+	}
+
+	&__player-info {
+		display: flex;
+		justify-content: space-between;
+
+		@include respond(675) {
+			flex-direction: column;
+			justify-content: space-between;
+		}
+	}
+
+	&__player-stats {
+		display: flex;
+		flex-direction: row;
+
+		@include respond(675) {
+			align-self: flex-end;
+			margin-top: 1.6rem;
+		}
+
+		&--underline {
+			border-bottom: .2rem solid var(--gray-dark);
+			justify-content: flex-end;
+		}
+	}
+
+	&__section {
+		margin-bottom: 8rem;
+
+		@include respond(675) {
+			margin-bottom: 6.4rem;
+		}
+
+		& h3 {
+			font-size: 2rem;
+			font-weight: 400;
+			text-transform: none;
+			border-bottom: .2rem solid var(--gray-dark);
+			margin-bottom: 4rem;
+
+			@include respond(675) {
+				margin-bottom: 2.4rem;
+			}
+		}
+	}
+
+	&__card {
+		max-width: 40rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__bids {
+		padding-top: 8rem;
+		max-width: 84rem;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-content: space-around;
+		max-width: 82.4rem;
+		margin: auto;
+		margin-bottom: 2.4rem;
+
+		@include respond(900) {
+			max-width: 100%;
+		}
+
+		@include respond(675) {
+			display: flex;
+			flex-direction: column;
+			padding-top: 4rem;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+.card-table {
+	width: 100%;
+	margin: 0 auto;
+
+	& table {
+		width: 100rem;
+	}
+
+	&__header {
+		width: 6.4rem;
+		padding: .8rem;
+	}
+
+	&__divider {
+		width: .4rem;
+		background-color: var(--gray-dark-2);
+	}
+
+	& table,
+	th,
+	td {
+		border: .1rem solid var(--gray-dark);
+		border-collapse: collapse;
+		text-align: center;
+	}
+
+	& a.btn {
+		margin-bottom: 1.6rem;
+	}
+}
+
+.table-scroll-wrapper {
+	max-width: 100vw;
+	overflow: auto;
+}

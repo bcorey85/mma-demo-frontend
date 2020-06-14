@@ -1,0 +1,40 @@
+.send-email {
+	display: flex;
+	flex-direction: column;
+	max-width: 40rem;
+	width: 100%;
+	margin: 0 auto;
+
+	&__radio-group {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 2.4rem;
+
+		& div:not(:last-of-type) {
+			margin-right: 2.4rem;
+		}
+	}
+
+	& label {
+		display: block;
+		white-space: nowrap;
+		margin-right: 1.6rem;
+
+		&:not(:first-of-type) {
+			margin-top: 1.6rem;
+		}
+	}
+
+	& input,
+	& textarea {
+		width: 100%;
+	}
+
+	& textarea {
+		height: 24rem;
+	}
+
+	& button {
+		margin-top: 1.6rem;
+	}
+}

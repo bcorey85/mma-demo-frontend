@@ -1,0 +1,27 @@
+.signup-form {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 100%;
+	max-width: 32rem;
+
+	& input {
+		margin-bottom: 1.6rem;
+		padding: .8rem;
+	}
+
+	&__controls {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: .8rem;
+
+		& button {
+			margin-bottom: 1.6rem;
+		}
+	}
+
+	& h5 {
+		margin-bottom: 2.4rem;
+		text-align: center;
+	}
+}

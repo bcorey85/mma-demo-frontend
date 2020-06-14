@@ -1,0 +1,31 @@
+@mixin respond($breakpoint) {
+	@if $breakpoint == 375 {
+		@media only screen and (max-width: 23.43em) {
+			@content;
+		} //375px
+	}
+
+	@if $breakpoint == 675 {
+		@media only screen and (max-width: 42.18em) {
+			@content;
+		} //675px
+	}
+
+	@if $breakpoint == 900 {
+		@media only screen and (max-width: 56.25em) {
+			@content;
+		} //900px
+	}
+
+	@if $breakpoint == 1200 {
+		@media only screen and (max-width: 75em) {
+			@content;
+		} //1200px
+	}
+
+	@if $breakpoint == 1800 {
+		@media only screen and (max-width: 112.5em) {
+			@content;
+		} //1800px
+	}
+}

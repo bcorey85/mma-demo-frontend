@@ -1,0 +1,31 @@
+.past-bids {
+	& select {
+		margin-right: 1.6rem;
+		width: 8rem;
+		height: 4rem;
+	}
+
+	& table {
+		width: 100%;
+
+		& th {
+			width: 16.67%;
+			text-align: left;
+		}
+
+		& td {
+			text-align: left;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		align-items: flex-end;
+
+		& label {
+			align-self: center;
+			display: block;
+			margin-bottom: .8rem;
+		}
+	}
+}

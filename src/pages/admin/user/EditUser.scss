@@ -1,0 +1,38 @@
+.edit-users {
+	& label {
+		display: block;
+
+		&:not(:first-of-type) {
+			margin-top: 1.6rem;
+		}
+	}
+
+	& button {
+		display: block;
+		margin-top: 1.6rem;
+		margin-bottom: 4rem;
+	}
+
+	& input {
+		width: 100%;
+		max-width: 40rem;
+	}
+
+	& select {
+		min-width: 16rem;
+		height: 3.6rem;
+	}
+
+	& p {
+		margin-top: 1.6rem;
+
+		&:last-of-type {
+			margin-bottom: 2.4rem;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		justify-content: space-between;
+	}
+}

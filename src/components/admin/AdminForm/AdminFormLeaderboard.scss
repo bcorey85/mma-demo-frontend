@@ -1,0 +1,14 @@
+.admin-form__leaderboard {
+	width: 100%;
+	max-width: 80rem;
+
+	& th {
+		text-align: left;
+		width: 33.33%;
+		padding: .8rem;
+	}
+
+	& td {
+		padding: .8rem;
+	}
+}

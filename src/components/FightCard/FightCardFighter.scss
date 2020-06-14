@@ -1,0 +1,55 @@
+@import '../../sass/abstracts/mixins';
+
+.fight-card__fighter-img {
+	height: 14rem;
+	width: 14rem;
+	background-color: var(--black);
+	position: relative;
+	border: 4px solid var(--black);
+
+	@include respond(375) {
+		height: 12rem;
+		width: 12rem;
+		margin: auto;
+	}
+
+	& img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: .8;
+	}
+
+	& span {
+		display: inline-block;
+		height: 4rem;
+		width: 4rem;
+		text-align: center;
+		color: var(--white);
+		font-size: 4rem;
+		font-weight: 500;
+		position: absolute;
+		right: .8rem;
+		bottom: .8rem;
+	}
+
+	&--selected {
+		opacity: 1 !important;
+		cursor: pointer;
+	}
+
+	&--unselected {
+		opacity: .2 !important;
+		cursor: pointer;
+	}
+}
+
+.fight-card__fighter-name {
+	font-weight: 600;
+	text-align: center;
+	margin-top: .8rem;
+}
+
+.fight-card__fighter-odds {
+	text-align: center;
+}

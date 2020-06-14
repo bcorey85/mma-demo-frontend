@@ -1,0 +1,18 @@
+.admin-form__win-totals {
+	width: 100%;
+	max-width: 40rem;
+
+	& th {
+		text-align: left;
+		padding: .8rem;
+		width: 33.33%;
+	}
+
+	& td {
+		padding: .8rem;
+	}
+
+	& tfoot {
+		font-weight: 600;
+	}
+}

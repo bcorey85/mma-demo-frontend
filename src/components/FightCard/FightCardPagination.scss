@@ -1,0 +1,28 @@
+@import '../../sass/abstracts/variables';
+
+.fight-card__pagination {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1.6rem;
+	margin-bottom: -4rem;
+
+	&-button {
+		height: 4.8rem;
+		cursor: pointer;
+		background: none;
+		border: none;
+		color: var(--gray-dark);
+
+		&:hover {
+			color: var(--red-primary);
+		}
+
+		&--previous {
+			margin-right: auto;
+		}
+
+		&--next {
+			margin-left: auto;
+		}
+	}
+}

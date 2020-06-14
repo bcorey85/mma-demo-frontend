@@ -1,0 +1,18 @@
+@import '../../../sass/abstracts/mixins';
+
+.sidebar-section {
+	@include respond(375) {
+		width: 100%;
+	}
+
+	&:not(:last-of-type) {
+		@include respond(675) {
+			margin-bottom: 1.6rem;
+		}
+	}
+
+	&__heading {
+		border-bottom: .2rem solid var(--gray-dark);
+		padding-bottom: .8rem;
+	}
+}

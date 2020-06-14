@@ -1,0 +1,65 @@
+.fight-card-form {
+	display: inline-block;
+	padding: .8rem .8rem 4rem .8rem;
+	width: 100%;
+	max-width: 40rem;
+
+	&__title {
+		text-align: center;
+	}
+
+	& input {
+		width: 100%;
+	}
+
+	& select {
+		width: 100%;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		margin-top: .8rem;
+		border-bottom: 2px solid var(--gray-dark);
+		padding-bottom: .8rem;
+	}
+
+	&__vs {
+		font-weight: 600;
+		margin-top: 6.5rem;
+		margin-left: .8rem;
+		margin-right: .8rem;
+	}
+
+	&__bid {
+		margin-top: .8rem;
+	}
+
+	&__bid--stats {
+		display: flex;
+	}
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		padding-top: .8rem;
+
+		&--left {
+			margin-right: .8rem;
+			width: 100%;
+			max-width: 16rem;
+		}
+
+		&--right {
+			margin-left: .8rem;
+			width: 100%;
+			max-width: 16rem;
+		}
+	}
+
+	&__footer-controls {
+		margin-top: 1.6rem;
+		display: flex;
+		justify-content: space-between;
+	}
+}

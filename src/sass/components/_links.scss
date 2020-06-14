@@ -1,0 +1,37 @@
+.link-list {
+	margin-bottom: 1.6rem;
+	padding: .8rem;
+}
+
+.link-list li {
+	margin: 1.6rem;
+}
+
+.link-list__link {
+	color: var(--black);
+	font-size: 1.6rem;
+}
+
+.link-list__link:hover {
+	color: var(--red-primary);
+}
+
+.link--red {
+	color: var(--red-primary);
+}
+
+.link-list--horizontal {
+	display: flex;
+}
+
+.link {
+	color: var(--black);
+	background-color: transparent;
+	text-decoration: underline;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		color: var(--red-primary);
+	}
+}
