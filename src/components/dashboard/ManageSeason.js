@@ -79,7 +79,7 @@ const ManageSeason = ({
 		);
 
 		return {
-			totalCards: sumTotal(cards),
+			totalCards: cards.length,
 			pointsSpent: sumTotal(pointsSpent),
 			correctPicks: sumTotal(correctPicks),
 			points: sumTotal(points),
