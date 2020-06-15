@@ -68,100 +68,105 @@ const CardTable = props => {
 				className='btn btn-primary--outline'>
 				Back to Card
 			</NavLink>
-			<div className='table-scroll-wrapper'>
-				<table>
-					<thead>
-						<tr>
-							<th>
-								<div>Season {seasonID}</div>
-								<div>Card {cardID}</div>
-							</th>
-							<th className='card-table__divider' />
-							{fights.map((fight, index) => {
-								return (
-									<React.Fragment key={`fight ${index + 1}`}>
-										<th className='card-table__header'>
-											{fight.fighter1.name}
-										</th>
-										<th className='card-table__header'>
-											{fight.fighter2.name}
-										</th>
-										<th className='card-table__divider' />
-									</React.Fragment>
-								);
-							})}
-							<th className='card-table__header'>Points Spent</th>
-							<th className='card-table__header'>
-								Correct Picks
-							</th>
-							<th className='card-table__header'>
-								Bonus - Penalty
-							</th>
-							<th className='card-table__header'>
-								Points Earned
-							</th>
-						</tr>
+			<div className='table-container'>
+				<div className='table-scroll-wrapper'>
+					<table>
+						<thead>
+							<tr>
+								<th>
+									<div>Season {seasonID}</div>
+									<div>Card {cardID}</div>
+								</th>
+								<th className='card-table__divider' />
+								{fights.map((fight, index) => {
+									return (
+										<React.Fragment
+											key={`fight ${index + 1}`}>
+											<th className='card-table__header'>
+												{fight.fighter1.name}
+											</th>
+											<th className='card-table__header'>
+												{fight.fighter2.name}
+											</th>
+											<th className='card-table__divider' />
+										</React.Fragment>
+									);
+								})}
+								<th className='card-table__header'>
+									Points Spent
+								</th>
+								<th className='card-table__header'>
+									Correct Picks
+								</th>
+								<th className='card-table__header'>
+									Bonus - Penalty
+								</th>
+								<th className='card-table__header'>
+									Points Earned
+								</th>
+							</tr>
 
-						<tr>
-							<td />
-							<td className='card-table__divider' />
-							{fights.map((fight, index) => {
+							<tr>
+								<td />
+								<td className='card-table__divider' />
+								{fights.map((fight, index) => {
+									return (
+										<React.Fragment
+											key={`fight ${index + 1} odds`}>
+											<td>{fight.fighter1.moneyLine}</td>
+											<td>{fight.fighter2.moneyLine}</td>
+											<td className='card-table__divider' />
+										</React.Fragment>
+									);
+								})}
+								<td />
+								<td />
+								<td />
+								<td />
+							</tr>
+						</thead>
+						<tbody>
+							{resultsCard.map(player => {
 								return (
-									<React.Fragment
-										key={`fight ${index + 1} odds`}>
-										<td>{fight.fighter1.moneyLine}</td>
-										<td>{fight.fighter2.moneyLine}</td>
+									<tr key={player.fightName}>
+										<td>
+											<FightName
+												fightName={player.fightName}
+												lastName={player.lastName}
+											/>
+										</td>
 										<td className='card-table__divider' />
-									</React.Fragment>
+										{fights.map((fight, index) => {
+											return (
+												<React.Fragment
+													key={`player.fightName fight ${index +
+														1}`}>
+													<td>
+														{findBid(
+															player,
+															fight.fighter1
+														)}
+													</td>
+													<td>
+														{findBid(
+															player,
+															fight.fighter2
+														)}
+													</td>
+													<td className='card-table__divider' />
+												</React.Fragment>
+											);
+										})}
+										<td>{player.pointsSpent}</td>
+										<td>{player.correctPicks}</td>
+										<td>{player.adjustments}</td>
+										<td>{player.adjustedPoints}</td>
+									</tr>
 								);
 							})}
-							<td />
-							<td />
-							<td />
-							<td />
-						</tr>
-					</thead>
-					<tbody>
-						{resultsCard.map(player => {
-							return (
-								<tr key={player.fightName}>
-									<td>
-										<FightName
-											fightName={player.fightName}
-											lastName={player.lastName}
-										/>
-									</td>
-									<td className='card-table__divider' />
-									{fights.map((fight, index) => {
-										return (
-											<React.Fragment
-												key={`player.fightName fight ${index +
-													1}`}>
-												<td>
-													{findBid(
-														player,
-														fight.fighter1
-													)}
-												</td>
-												<td>
-													{findBid(
-														player,
-														fight.fighter2
-													)}
-												</td>
-												<td className='card-table__divider' />
-											</React.Fragment>
-										);
-									})}
-									<td>{player.pointsSpent}</td>
-									<td>{player.correctPicks}</td>
-									<td>{player.adjustments}</td>
-									<td>{player.adjustedPoints}</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	);

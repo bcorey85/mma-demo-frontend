@@ -205,7 +205,7 @@ const SendEmail = props => {
 				<button
 					className='btn btn-primary--outline'
 					onClick={handleDemoClick}>
-					Update User Details
+					Update User
 				</button>
 				<button
 					className='btn btn-delete--outline'
