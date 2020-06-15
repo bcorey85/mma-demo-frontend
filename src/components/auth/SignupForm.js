@@ -6,6 +6,8 @@ import useMessage from '../../hooks/useMessage';
 import MessageContainer from '../MessageContainer/MessageContainer';
 import { AuthContext } from '../../contexts/AuthContext';
 
+import useDemo from '../../hooks/useDemo';
+
 import './SignupForm.scss';
 
 const SignupForm = props => {
@@ -17,6 +19,8 @@ const SignupForm = props => {
 	const [ email, setEmail ] = useInputState('');
 	const [ password, setPassword ] = useInputState('');
 	const [ message, setMessage, clearMessage ] = useMessage('');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const signup = async e => {
 		e.preventDefault();

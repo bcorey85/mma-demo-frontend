@@ -8,6 +8,8 @@ import sumTotal from '../../utils/sumTotal';
 
 import './ManageSeason.scss';
 
+import useDemo from '../../hooks/useDemo';
+
 const ManageSeason = ({
 	leagueState,
 	auth,
@@ -17,6 +19,9 @@ const ManageSeason = ({
 }) => {
 	const [ message, setMessage, clearMessage ] = useMessage();
 	const [ signupConfirmed, setSignupConfirmed ] = useState(false);
+
+	const { handleDemoClick } = useDemo(setMessage);
+
 	const handleSignupConfirm = () => {
 		setSignupConfirmed(!signupConfirmed);
 	};
@@ -114,7 +119,9 @@ const ManageSeason = ({
 						/>
 					</div>
 
-					<button onClick={signup} className='btn btn-primary'>
+					<button
+						onClick={handleDemoClick}
+						className='btn btn-primary'>
 						Sign Up
 					</button>
 				</div>

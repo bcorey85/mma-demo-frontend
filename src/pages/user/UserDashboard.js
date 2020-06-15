@@ -12,6 +12,8 @@ import PastBids from '../../components/dashboard/PastBids';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
+import useDemo from '../../hooks/useDemo';
+
 import './UserDashboard.scss';
 
 const UserDashboard = props => {
@@ -61,7 +63,6 @@ const UserDashboard = props => {
 						url: `${process.env.REACT_APP_API_URL}/`,
 						token: auth.token
 					});
-					console.log(cardDataResponse);
 
 					if (cardDataResponse.type === 'error') {
 						setMaintenanceMode(true);
@@ -167,7 +168,7 @@ const UserDashboard = props => {
 					onClick={() => setUpdateUserDetailsMode(true)}>
 					Edit User Details
 				</button>
-				<button className='link' onClick={logout}>
+				<button className='link' onClick={logout} disabled>
 					Log Out
 				</button>
 			</div>

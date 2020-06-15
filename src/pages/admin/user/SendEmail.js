@@ -9,12 +9,16 @@ import './SendEmail.scss';
 import { AuthContext } from '../../../contexts/AuthContext';
 import useMessage from '../../../hooks/useMessage';
 
+import useDemo from '../../../hooks/useDemo';
+
 const SendEmail = props => {
 	const auth = useContext(AuthContext);
 	const [ message, setMessage, clearMessage ] = useMessage('');
 	const [ title, setTitle ] = useInputState('');
 	const [ body, setBody ] = useInputState('');
 	const [ activeSeasonUsers, setActiveSeasonUsers ] = useState('true');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const handleUserSelect = e => {
 		setActiveSeasonUsers(e.target.value);
@@ -96,7 +100,7 @@ const SendEmail = props => {
 				<MessageContainer type={message.type}>
 					{message.description}
 				</MessageContainer>
-				<button onClick={sendEmail} className='btn btn-primary'>
+				<button onClick={handleDemoClick} className='btn btn-primary'>
 					Send Email
 				</button>
 			</form>

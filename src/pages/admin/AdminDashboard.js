@@ -12,7 +12,6 @@ const AdminDashBoard = props => {
 			<div className='u-full-width'>
 				<h2>admin</h2>
 				<ManageLeague history={props.history} />
-
 				<h3>Manage Seasons</h3>
 				<ul className='link-list'>
 					<li>

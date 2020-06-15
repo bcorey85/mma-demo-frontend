@@ -13,6 +13,8 @@ import EditBidsFormHeader from '../../../components/admin/EditBidsForm/EditBidsF
 import EditBidsFormBids from '../../../components/admin/EditBidsForm/EditBidsFormBids';
 import LoadingSpinner from '../../../components/shared/LoadingSpinner';
 
+import useDemo from '../../../hooks/useDemo';
+
 const EditBidsForm = props => {
 	const auth = useContext(AuthContext);
 	const { seasonID, cardID, fightID } = props.match.params;
@@ -23,6 +25,8 @@ const EditBidsForm = props => {
 	const [ deleteBidsModalShowing, setDeleteBidsModalShowing ] = useState(
 		false
 	);
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	useEffect(
 		() => {
@@ -311,7 +315,7 @@ const EditBidsForm = props => {
 							header1='Are you sure you wish to delete these BIDS?'
 							header2='WARNING - This action is Permanent!'
 							toggleModal={toggleDeleteBidsModal}
-							modalAction={deleteBids}
+							modalAction={handleDemoClick}
 							modalActionText='Delete'
 						/>
 					)}
@@ -319,7 +323,7 @@ const EditBidsForm = props => {
 
 				<AdminFormFooterControls
 					b1Text='Submit'
-					b1HandleClick={editBids}
+					b1HandleClick={handleDemoClick}
 					b2Text={`Delete Fight ${fightID} Bids`}
 					b2HandleClick={toggleDeleteBidsModal}
 				/>

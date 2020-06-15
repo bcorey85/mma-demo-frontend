@@ -7,12 +7,14 @@ import useMessage from '../../hooks/useMessage';
 import MessageContainer from '../MessageContainer/MessageContainer';
 import { AuthContext } from '../../contexts/AuthContext';
 
+import useDemo from '../../hooks/useDemo';
+
 import './LoginForm.scss';
 
 const LoginForm = props => {
 	const auth = useContext(AuthContext);
-	const [ email, setEmail ] = useInputState('');
-	const [ password, setPassword ] = useInputState('');
+	const [ email, setEmail ] = useInputState('p12@gmail.com');
+	const [ password, setPassword ] = useInputState('111111');
 	const [ message, setMessage, clearMessage ] = useMessage('');
 
 	const login = async e => {
@@ -69,9 +71,6 @@ const LoginForm = props => {
 
 	return (
 		<form className='login-form'>
-			<MessageContainer type={message.type}>
-				{message.description}
-			</MessageContainer>
 			<label htmlFor='email'>Email</label>
 			<input
 				type='email'
@@ -96,6 +95,9 @@ const LoginForm = props => {
 				<button onClick={login} className='btn btn-primary'>
 					Log In
 				</button>
+				<MessageContainer type={message.type}>
+					{message.description}
+				</MessageContainer>
 				<NavLink to='/forgotpassword' className='link'>
 					Reset Password
 				</NavLink>

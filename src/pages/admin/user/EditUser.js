@@ -9,6 +9,8 @@ import './SendEmail.scss';
 import { AuthContext } from '../../../contexts/AuthContext';
 import useMessage from '../../../hooks/useMessage';
 
+import useDemo from '../../../hooks/useDemo';
+
 import './EditUser.scss';
 
 const SendEmail = props => {
@@ -23,6 +25,9 @@ const SendEmail = props => {
 	const [ deleteUserModalShowing, setDeleteUserModalShowing ] = useState(
 		false
 	);
+
+	const { handleDemoClick } = useDemo(setMessage);
+
 	const getData = useCallback(
 		async () => {
 			try {
@@ -199,7 +204,7 @@ const SendEmail = props => {
 			<div className='edit-users__controls'>
 				<button
 					className='btn btn-primary--outline'
-					onClick={handleEditUser}>
+					onClick={handleDemoClick}>
 					Update User Details
 				</button>
 				<button
@@ -243,7 +248,7 @@ const SendEmail = props => {
 					header1={`Are you sure you wish to delete this user?`}
 					header2='WARNING - This action is Permanent!'
 					toggleModal={toggleModal}
-					modalAction={handleDeleteUser}
+					modalAction={handleDemoClick}
 					modalActionText='Delete'
 				/>
 			)}
@@ -252,12 +257,3 @@ const SendEmail = props => {
 };
 
 export default SendEmail;
-
-// // Get single user by id
-// router.get('/admin/user/:userID', adminAuth, getUserById);
-
-// // Update user
-// router.put('/admin/user/:userID', adminAuth, updateUser);
-
-// // Delete user
-// router.delete('/admin/user/:userID', adminAuth, deleteUser);

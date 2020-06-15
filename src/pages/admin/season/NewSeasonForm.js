@@ -9,11 +9,14 @@ import useInputState from '../../../hooks/useInputState';
 import useMessage from '../../../hooks/useMessage';
 import httpRequest from '../../../utils/httpRequest';
 import { AuthContext } from '../../../contexts/AuthContext';
+import useDemo from '../../../hooks/useDemo';
 
 const NewSeasonForm = props => {
 	const auth = useContext(AuthContext);
 	const [ message, setMessage, clearMessage ] = useMessage('');
 	const [ seasonNumber, setSeasonNumber ] = useInputState('');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const createSeason = async e => {
 		e.preventDefault();
@@ -70,7 +73,7 @@ const NewSeasonForm = props => {
 					<button
 						className='btn btn-primary'
 						type='submit'
-						onClick={createSeason}>
+						onClick={handleDemoClick}>
 						Submit
 					</button>
 				</div>

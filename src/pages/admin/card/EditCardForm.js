@@ -10,14 +10,16 @@ import AdminFormFooterControls from '../../../components/admin/AdminForm/AdminFo
 import MessageContainer from '../../../components/MessageContainer/MessageContainer';
 import LoadingSpinner from '../../../components/shared/LoadingSpinner';
 import PaginationControls from '../../../components/shared/PaginationControls';
+import AdminCardForm from '../../../components/admin/AdminForm/AdminCardForm';
 
 import cardReducer from '../../../reducers/card/cardReducer';
 import { AuthContext } from '../../../contexts/AuthContext';
 import useMessage from '../../../hooks/useMessage';
 import httpRequest from '../../../utils/httpRequest';
 
+import useDemo from '../../../hooks/useDemo';
+
 import './EditCardForm.scss';
-import AdminCardForm from '../../../components/admin/AdminForm/AdminCardForm';
 
 const EditCardForm = props => {
 	const auth = useContext(AuthContext);
@@ -29,6 +31,9 @@ const EditCardForm = props => {
 	);
 	const { seasonID, cardID } = props.match.params;
 	const [ message, setMessage, clearMessage ] = useMessage('');
+
+	const { handleDemoClick } = useDemo(setMessage);
+
 	useEffect(
 		() => {
 			const getCard = async () => {
@@ -163,7 +168,7 @@ const EditCardForm = props => {
 			header1='Are you sure you wish to delete this CARD?'
 			header2='WARNING - This action is Permanent!'
 			toggleModal={toggleDeleteCardModal}
-			modalAction={deleteCard}
+			modalAction={handleDemoClick}
 			modalActionText='Delete'
 		/>
 	);
@@ -234,7 +239,7 @@ const EditCardForm = props => {
 				</AdminCardForm>
 				<AdminFormFooterControls
 					b1Text='Update Card'
-					b1HandleClick={updateCard}
+					b1HandleClick={handleDemoClick}
 					b2Text='Delete Card'
 					b2HandleClick={toggleDeleteCardModal}
 				/>

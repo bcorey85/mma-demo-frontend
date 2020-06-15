@@ -12,6 +12,8 @@ import validateBids from '../../validators/bidValidators';
 import calcPoints from '../../utils/calcPoints';
 import useBidLogic from '../../hooks/useBidLogic';
 
+import useDemo from '../../hooks/useDemo';
+
 const ManageBids = ({
 	cardData,
 	leagueState,
@@ -31,6 +33,8 @@ const ManageBids = ({
 	const [ existingBids, setExistingBids ] = useState(false);
 	const [ editBidsMode, setEditBidsMode ] = useState(false);
 	const [ message, setMessage, clearMessage ] = useMessage({});
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const {
 		pointsAvailable,
@@ -302,9 +306,7 @@ const ManageBids = ({
 	const bidControls = () => {
 		if (currentUserBids.bids.length === 0) {
 			return (
-				<button
-					className='btn btn-primary'
-					onClick={() => saveBids('post')}>
+				<button className='btn btn-primary' onClick={handleDemoClick}>
 					Save Bids
 				</button>
 			);
@@ -327,9 +329,7 @@ const ManageBids = ({
 					onClick={resetBids}>
 					Reset
 				</button>
-				<button
-					className='btn btn-primary'
-					onClick={() => saveBids('put')}>
+				<button className='btn btn-primary' onClick={handleDemoClick}>
 					Save Edits
 				</button>
 			</React.Fragment>

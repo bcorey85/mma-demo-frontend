@@ -6,12 +6,17 @@ import useInputState from '../../hooks/useInputState';
 import useMessage from '../../hooks/useMessage';
 import httpRequest from '../../utils/httpRequest';
 
+import useDemo from '../../hooks/useDemo';
+
 import './ForgotPassword.scss';
 
 const ForgotPassword = props => {
 	const [ email, setEmail ] = useInputState('');
 	const [ message, setMessage, clearMessage ] = useMessage({});
 	const [ requestSent, setRequestSent ] = useState(false);
+
+	const { handelDemoClick } = useDemo(setMessage);
+
 	const recoverPassword = async e => {
 		e.preventDefault();
 		if (!email) {
@@ -74,7 +79,7 @@ const ForgotPassword = props => {
 					autoComplete='email'
 				/>
 			</form>
-			<button className='btn btn-primary' onClick={recoverPassword}>
+			<button className='btn btn-primary' onClick={handelDemoClick}>
 				Submit
 			</button>
 			<MessageContainer type={message.type}>

@@ -12,6 +12,43 @@ const MainNav = () => {
 	};
 	const auth = useContext(AuthContext);
 
+	// const authLinks = () => {
+	// 	if (auth.isLoggedIn && auth.isAdmin === false) {
+	// 		return (
+	// 			<li>
+	// 				<NavLink
+	// 					to={`/user/${auth.userId}`}
+	// 					className='nav__link'
+	// 					onClick={menuOpen ? toggleNav : null}>
+	// 					Dashboard
+	// 				</NavLink>
+	// 			</li>
+	// 		);
+	// 	} else if (auth.isLoggedIn && auth.isAdmin === true) {
+	// 		return (
+	// 			<li>
+	// 				<NavLink
+	// 					to='/admin/dashboard'
+	// 					className='nav__link'
+	// 					onClick={menuOpen ? toggleNav : null}>
+	// 					Admin Dashboard
+	// 				</NavLink>
+	// 			</li>
+	// 		);
+	// 	} else {
+	// 		return (
+	// 			<li>
+	// 				<NavLink
+	// 					to='/login'
+	// 					className='nav__link'
+	// 					onClick={menuOpen ? toggleNav : null}>
+	// 					Login
+	// 				</NavLink>
+	// 			</li>
+	// 		);
+	// 	}
+	// };
+
 	const authLinks = () => {
 		if (auth.isLoggedIn && auth.isAdmin === false) {
 			return (
@@ -24,17 +61,6 @@ const MainNav = () => {
 					</NavLink>
 				</li>
 			);
-		} else if (auth.isLoggedIn && auth.isAdmin === true) {
-			return (
-				<li>
-					<NavLink
-						to='/admin/dashboard'
-						className='nav__link'
-						onClick={menuOpen ? toggleNav : null}>
-						Admin Dashboard
-					</NavLink>
-				</li>
-			);
 		} else {
 			return (
 				<li>
@@ -42,7 +68,33 @@ const MainNav = () => {
 						to='/login'
 						className='nav__link'
 						onClick={menuOpen ? toggleNav : null}>
-						Login
+						Dashboard
+					</NavLink>
+				</li>
+			);
+		}
+	};
+
+	const adminAuthLinks = () => {
+		if (auth.adminIsLoggedIn && auth.isAdmin === true) {
+			return (
+				<li>
+					<NavLink
+						to={`/admin/dashboard`}
+						className='nav__link'
+						onClick={menuOpen ? toggleNav : null}>
+						Admin
+					</NavLink>
+				</li>
+			);
+		} else {
+			return (
+				<li>
+					<NavLink
+						to='/admin'
+						className='nav__link'
+						onClick={menuOpen ? toggleNav : null}>
+						Admin
 					</NavLink>
 				</li>
 			);
@@ -77,6 +129,7 @@ const MainNav = () => {
 					</NavLink>
 				</li>
 				{authLinks()}
+				{adminAuthLinks()}
 			</ul>
 			<div className='nav__mobile'>
 				<div

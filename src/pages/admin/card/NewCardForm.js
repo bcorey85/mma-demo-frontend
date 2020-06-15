@@ -15,6 +15,7 @@ import cardReducer from '../../../reducers/card/cardReducer';
 import { limitRange } from '../../../utils/limitNum';
 
 import './NewCardForm.scss';
+import useDemo from '../../../hooks/useDemo';
 
 const NewCardForm = props => {
 	const auth = useContext(AuthContext);
@@ -22,6 +23,8 @@ const NewCardForm = props => {
 	const [ message, setMessage, clearMessage ] = useMessage('');
 	const [ numFights, setNumFights ] = useState(7);
 	const [ isLoading, setIsLoading ] = useState(true);
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	useEffect(() => {
 		dispatch({
@@ -225,7 +228,7 @@ const NewCardForm = props => {
 				<AdminCardForm>{formInputs}</AdminCardForm>
 				<AdminFormFooterControls
 					b1Text='Create Card'
-					b1HandleClick={createCard}
+					b1HandleClick={handleDemoClick}
 				/>
 				<MessageContainer type={message.type}>
 					{message.description}

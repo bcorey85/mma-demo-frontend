@@ -8,12 +8,16 @@ import httpRequest from '../../utils/httpRequest';
 import passwordUpdateValidate from '../../validators/passwordUpdateValidate';
 import { AuthContext } from '../../contexts/AuthContext';
 
+import useDemo from '../../hooks/useDemo';
+
 const ResetPassword = props => {
 	const resetToken = props.match.params.resetToken;
 	const auth = useContext(AuthContext);
 	const [ password, setPassword ] = useInputState('');
 	const [ confirmPassword, setConfirmPassword ] = useInputState('');
 	const [ message, setMessage, clearMessage ] = useMessage('');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const resetPassword = async e => {
 		e.preventDefault();
@@ -78,7 +82,7 @@ const ResetPassword = props => {
 					onChange={setConfirmPassword}
 				/>
 			</form>
-			<button className='btn btn-primary' onClick={resetPassword}>
+			<button className='btn btn-primary' onClick={handleDemoClick}>
 				Submit
 			</button>
 			<MessageContainer type={message.type}>

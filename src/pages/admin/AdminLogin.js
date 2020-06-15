@@ -12,8 +12,8 @@ import AdminFormInput from '../../components/admin/AdminForm/AdminFormInput';
 const AdminLogin = props => {
 	const auth = useContext(AuthContext);
 	const [ message, setMessage, clearMessage ] = useMessage('');
-	const [ adminName, setAdminName, resetAdminName ] = useInputState('');
-	const [ password, setPassword, resetPassword ] = useInputState('');
+	const [ adminName, setAdminName, resetAdminName ] = useInputState('admin');
+	const [ password, setPassword, resetPassword ] = useInputState('admin111');
 
 	const handleSubmit = async e => {
 		e.preventDefault();

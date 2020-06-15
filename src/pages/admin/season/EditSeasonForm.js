@@ -15,6 +15,7 @@ import AdminFormWinTotals from '../../../components/admin/AdminForm/AdminFormWin
 import AdminFormLeaderboard from '../../../components/admin/AdminForm/AdminFormLeaderboard';
 import AdminFormCardList from '../../../components/admin/AdminForm/AdminFormCardList';
 import LoadingSpinner from '../../../components/shared/LoadingSpinner';
+import useDemo from '../../../hooks/useDemo';
 
 const EditSeasonForm = props => {
 	let { seasonID } = props.match.params;
@@ -25,6 +26,8 @@ const EditSeasonForm = props => {
 	const [ leaderBoard, setLeaderBoard ] = useState('');
 	const [ winTotals, setWinTotals ] = useState('');
 	const [ cards, setCards ] = useState('');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	useEffect(
 		() => {
@@ -143,7 +146,7 @@ const EditSeasonForm = props => {
 					<AdminFormFooterControls
 						b1Text='Update Season'
 						b2Text='Delete Season'
-						b1HandleClick={updateSeason}
+						b1HandleClick={handleDemoClick}
 						b2HandleClick={toggleModal}
 					/>
 					<MessageContainer type={message.type}>
@@ -155,7 +158,7 @@ const EditSeasonForm = props => {
 						header1='Are you sure you wish to delete this season?'
 						header2='WARNING - This action is permanent!'
 						toggleModal={toggleModal}
-						modalAction={deleteSeason}
+						modalAction={handleDemoClick}
 						modalActionText='Delete'
 					/>
 				)}

@@ -6,6 +6,8 @@ import MessageContainer from '../../MessageContainer/MessageContainer';
 import httpRequest from '../../../utils/httpRequest';
 import useMessage from '../../../hooks/useMessage';
 
+import useDemo from '../../../hooks/useDemo';
+
 import './ManageLeague.scss';
 
 const ManageLeague = props => {
@@ -19,6 +21,8 @@ const ManageLeague = props => {
 	const [ cardNumbers, setCardNumbers ] = useState();
 	const [ seasonNumbers, setSeasonNumbers ] = useState();
 	const [ message, setMessage, clearMessage ] = useMessage();
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	useEffect(
 		() => {
@@ -255,7 +259,9 @@ const ManageLeague = props => {
 			<MessageContainer type={message.type}>
 				{message.description}
 			</MessageContainer>
-			<button className='btn btn-primary--outline' onClick={handleSave}>
+			<button
+				className='btn btn-primary--outline'
+				onClick={handleDemoClick}>
 				Save League Options
 			</button>
 		</section>

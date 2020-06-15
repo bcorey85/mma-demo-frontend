@@ -7,6 +7,8 @@ import useInputState from '../../hooks/useInputState';
 import useMessage from '../../hooks/useMessage';
 import passwordUpdateValidate from '../../validators/passwordUpdateValidate';
 
+import useDemo from '../../hooks/useDemo';
+
 import './UpdateUserDetails.scss';
 
 const UpdateUserDetails = ({
@@ -22,6 +24,8 @@ const UpdateUserDetails = ({
 	const [ password, setPassword ] = useInputState('');
 	const [ confirmPassword, setConfirmPassword ] = useInputState('');
 	const [ message, setMessage, clearMessage ] = useMessage('');
+
+	const { handleDemoClick } = useDemo(setMessage);
 
 	const submitUserDetails = async e => {
 		e.preventDefault();
@@ -151,7 +155,7 @@ const UpdateUserDetails = ({
 				autoComplete='confirm-new-password'
 			/>
 
-			<button className='btn btn-primary' onClick={submitUserDetails}>
+			<button className='btn btn-primary' onClick={handleDemoClick}>
 				Submit
 			</button>
 			<MessageContainer type={message.type}>
