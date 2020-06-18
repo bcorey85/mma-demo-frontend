@@ -29,9 +29,11 @@ const FightCardFighter = ({
 							? 'fight-card__fighter-img--selected'
 							: 'fight-card__fighter-img--unselected'}`}
 					/>
-					<span>
-						<div>{outcome}</div>
-					</span>
+					{!bidsCard && (
+						<span>
+							<div>{outcome}</div>
+						</span>
+					)}
 				</div>
 				<div className='fight-card__fighter-name'>{name}</div>
 				<div className='fight-card__fighter-odds'>{moneyLine}</div>
