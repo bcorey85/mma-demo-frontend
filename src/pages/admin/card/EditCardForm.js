@@ -16,6 +16,12 @@ import cardReducer from '../../../reducers/card/cardReducer';
 import { AuthContext } from '../../../contexts/AuthContext';
 import useMessage from '../../../hooks/useMessage';
 import httpRequest from '../../../utils/httpRequest';
+import {
+	editCardAction,
+	updateMetaFieldAction,
+	updateFightFieldAction,
+	updateResultsCardAction
+} from '../../../reducers/card/cardActions';
 
 import useDemo from '../../../hooks/useDemo';
 
@@ -43,10 +49,7 @@ const EditCardForm = props => {
 						.REACT_APP_API_URL}/admin/season/${seasonID}/card/${cardID}/`,
 					token: auth.token
 				});
-				dispatch({
-					type: 'EDIT_CARD',
-					payload: response.data.card
-				});
+				dispatch(editCardAction(response.data.card));
 				setPagination(response.data.pagination);
 				setIsLoading(false);
 			};
@@ -134,33 +137,15 @@ const EditCardForm = props => {
 	};
 
 	const handleMetaChange = e => {
-		dispatch({
-			type: 'UPDATE_META_FIELD',
-			payload: {
-				field: e.target.name,
-				value: e.target.value
-			}
-		});
+		dispatch(updateMetaFieldAction(e.target.name, e.target.value));
 	};
 
 	const handleFightChange = e => {
-		dispatch({
-			type: 'UPDATE_FIGHT_FIELD',
-			payload: {
-				field: e.target.name,
-				value: e.target.value
-			}
-		});
+		dispatch(updateFightFieldAction(e.target.name, e.target.value));
 	};
 
 	const handleResultsChange = e => {
-		dispatch({
-			type: 'UPDATE_RESULTS_CARD',
-			payload: {
-				field: e.target.name,
-				value: e.target.value
-			}
-		});
+		dispatch(updateResultsCardAction(e.target.name, e.target.value));
 	};
 
 	const deleteCardModal = (

@@ -13,6 +13,11 @@ import LoadingSpinner from '../../../components/shared/LoadingSpinner';
 import { AuthContext } from '../../../contexts/AuthContext';
 import cardReducer from '../../../reducers/card/cardReducer';
 import { limitRange } from '../../../utils/limitNum';
+import {
+	createCardAction,
+	updateMetaFieldAction,
+	updateFightFieldAction
+} from '.././../../reducers/card/cardActions';
 
 import './NewCardForm.scss';
 import useDemo from '../../../hooks/useDemo';
@@ -27,24 +32,13 @@ const NewCardForm = props => {
 	const { handleDemoClick } = useDemo(setMessage);
 
 	useEffect(() => {
-		dispatch({
-			type: 'CREATE_CARD',
-			payload: {
-				numFights: 7
-			}
-		});
+		dispatch(createCardAction(7));
 
 		setIsLoading(false);
 	}, []);
 
 	const handleChange = e => {
-		dispatch({
-			type: 'UPDATE_META_FIELD',
-			payload: {
-				field: e.target.name,
-				value: e.target.value
-			}
-		});
+		dispatch(updateMetaFieldAction(e.target.name, e.target.value));
 	};
 
 	const handleNumFightsChange = e => {
@@ -54,23 +48,11 @@ const NewCardForm = props => {
 
 	const handleNumFightsSet = e => {
 		e.preventDefault();
-		dispatch({
-			type: 'UPDATE_META_FIELD',
-			payload: {
-				field: 'numFights',
-				value: numFights
-			}
-		});
+		dispatch(e.updateMetaFieldAction('numFights', numFights));
 	};
 
 	const handleFightChange = e => {
-		dispatch({
-			type: 'UPDATE_FIGHT_FIELD',
-			payload: {
-				field: e.target.name,
-				value: e.target.value
-			}
-		});
+		dispatch(updateFightFieldAction(e.target.name, e.target.value));
 	};
 
 	let { seasonID } = props.match.params;

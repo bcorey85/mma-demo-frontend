@@ -4,7 +4,7 @@ import {
 	updateMetaField,
 	updateFightField,
 	updateResultsCard
-} from './cardActions';
+} from './cardReducerFunctions';
 
 const cardReducer = (state, action) => {
 	switch (action.type) {
