@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import useInputState from '../../hooks/useInputState';
@@ -17,8 +17,14 @@ const LoginForm = props => {
 	const [ password, setPassword ] = useInputState('111111');
 	const [ message, setMessage, clearMessage ] = useMessage('');
 
+	useEffect(() => {
+		login();
+	}, []);
+
 	const login = async e => {
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 
 		const inputs = [ email, password ];
 

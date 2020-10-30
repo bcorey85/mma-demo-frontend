@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 
 import useInputState from '../../hooks/useInputState';
@@ -15,8 +15,15 @@ const AdminLogin = props => {
 	const [ adminName, setAdminName, resetAdminName ] = useInputState('admin');
 	const [ password, setPassword, resetPassword ] = useInputState('admin111');
 
-	const handleSubmit = async e => {
-		e.preventDefault();
+	useEffect(() => {
+		handleLogin();
+	});
+
+	const handleLogin = async e => {
+		if (e) {
+			e.preventDefault();
+		}
+
 		try {
 			const res = await axios.post(
 				`${process.env.REACT_APP_API_URL}/admin/login`,
@@ -52,7 +59,7 @@ const AdminLogin = props => {
 		<main className='main-content'>
 			<div className='u-full-width'>
 				<h2>admin</h2>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleLogin}>
 					<div>
 						<AdminFormInput
 							type='text'
