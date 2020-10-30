@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 import useInputState from '../../hooks/useInputState';
@@ -15,45 +15,60 @@ const AdminLogin = props => {
 	const [ adminName, setAdminName, resetAdminName ] = useInputState('admin');
 	const [ password, setPassword, resetPassword ] = useInputState('admin111');
 
-	useEffect(() => {
-		handleLogin();
-	});
+	const handleLogin = useCallback(
+		async e => {
+			if (e) {
+				e.preventDefault();
+			}
 
-	const handleLogin = async e => {
-		if (e) {
-			e.preventDefault();
-		}
+			try {
+				const res = await axios.post(
+					`${process.env.REACT_APP_API_URL}/admin/login`,
+					{
+						adminName: adminName,
+						password: password
+					}
+				);
 
-		try {
-			const res = await axios.post(
-				`${process.env.REACT_APP_API_URL}/admin/login`,
-				{
-					adminName: adminName,
-					password: password
+				if (res.status !== 200) {
+					console.log(res);
+					throw new Error(res.data.error);
 				}
-			);
+				const { token, userId, isAdmin } = res.data;
 
-			if (res.status !== 200) {
-				console.log(res);
-				throw new Error(res.data.error);
+				auth.login(userId, token, isAdmin);
+				props.history.push('/admin/dashboard');
+			} catch (error) {
+				if (error.response) {
+					resetAdminName();
+					resetPassword();
+
+					setMessage({
+						type: 'error',
+						description: error.response.data.error
+					});
+					clearMessage();
+				}
 			}
-			const { token, userId, isAdmin } = res.data;
+		},
+		[
+			adminName,
+			auth,
+			clearMessage,
+			password,
+			props.history,
+			resetAdminName,
+			resetPassword,
+			setMessage
+		]
+	);
 
-			auth.login(userId, token, isAdmin);
-			props.history.push('/admin/dashboard');
-		} catch (error) {
-			if (error.response) {
-				resetAdminName();
-				resetPassword();
-
-				setMessage({
-					type: 'error',
-					description: error.response.data.error
-				});
-				clearMessage();
-			}
-		}
-	};
+	useEffect(
+		() => {
+			handleLogin();
+		},
+		[ handleLogin ]
+	);
 
 	return (
 		<main className='main-content'>

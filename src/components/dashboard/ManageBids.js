@@ -203,73 +203,74 @@ const ManageBids = ({
 		updateBidLogic(initialBidState, initialPoints);
 	};
 
-	const saveBids = async action => {
-		const validation = validateBids(
-			bids,
-			bidsRemaining,
-			bidsRemainingError,
-			pointsAvailableError
-		);
+	/* REMOVED FOR DEMO MODE */
+	// const saveBids = async action => {
+	// 	const validation = validateBids(
+	// 		bids,
+	// 		bidsRemaining,
+	// 		bidsRemainingError,
+	// 		pointsAvailableError
+	// 	);
 
-		if (validation.type === 'error') {
-			setMessage({
-				type: 'error',
-				description: validation.description
-			});
-			clearMessage();
-			return;
-		}
+	// 	if (validation.type === 'error') {
+	// 		setMessage({
+	// 			type: 'error',
+	// 			description: validation.description
+	// 		});
+	// 		clearMessage();
+	// 		return;
+	// 	}
 
-		const payload = {
-			bids: bids.filter(bid => bid.bid !== null && bid.fighter !== '')
-		};
+	// 	const payload = {
+	// 		bids: bids.filter(bid => bid.bid !== null && bid.fighter !== '')
+	// 	};
 
-		try {
-			const response = await httpRequest({
-				method: action,
-				url: `${process.env.REACT_APP_API_URL}/user/${auth.userId}/bid`,
-				token: auth.token,
-				payload: payload
-			});
+	// 	try {
+	// 		const response = await httpRequest({
+	// 			method: action,
+	// 			url: `${process.env.REACT_APP_API_URL}/user/${auth.userId}/bid`,
+	// 			token: auth.token,
+	// 			payload: payload
+	// 		});
 
-			if (response.type === 'error') {
-				setMessage({
-					type: 'error',
-					description: response.description
-				});
-				clearMessage();
-				return;
-			}
+	// 		if (response.type === 'error') {
+	// 			setMessage({
+	// 				type: 'error',
+	// 				description: response.description
+	// 			});
+	// 			clearMessage();
+	// 			return;
+	// 		}
 
-			setMessage({
-				type: 'success',
-				description: response.data.message
-			});
+	// 		setMessage({
+	// 			type: 'success',
+	// 			description: response.data.message
+	// 		});
 
-			clearMessage();
+	// 		clearMessage();
 
-			// Add bids to current bids
-			if (currentUserBids.bids.length === 0) {
-				currentUserBids.bids = [ ...bids ];
-			}
+	// 		// Add bids to current bids
+	// 		if (currentUserBids.bids.length === 0) {
+	// 			currentUserBids.bids = [ ...bids ];
+	// 		}
 
-			setExistingBids(true);
-			setEditBidsMode(false);
-			setInitialBidState([ ...bids ]);
-		} catch (error) {
-			console.log(error);
-			if (error.response) {
-				console.log(error.response);
-				setMessage({
-					type: 'error',
-					description: error.response.data.error
-				});
-				clearMessage();
-			} else {
-				history.push('/500');
-			}
-		}
-	};
+	// 		setExistingBids(true);
+	// 		setEditBidsMode(false);
+	// 		setInitialBidState([ ...bids ]);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 		if (error.response) {
+	// 			console.log(error.response);
+	// 			setMessage({
+	// 				type: 'error',
+	// 				description: error.response.data.error
+	// 			});
+	// 			clearMessage();
+	// 		} else {
+	// 			history.push('/500');
+	// 		}
+	// 	}
+	// };
 
 	if (isLoading) {
 		return <LoadingSpinner />;

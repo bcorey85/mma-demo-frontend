@@ -12,8 +12,6 @@ import PastBids from '../../components/dashboard/PastBids';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
-import useDemo from '../../hooks/useDemo';
-
 import './UserDashboard.scss';
 
 const UserDashboard = props => {

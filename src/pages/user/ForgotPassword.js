@@ -17,41 +17,42 @@ const ForgotPassword = props => {
 
 	const { handelDemoClick } = useDemo(setMessage);
 
-	const recoverPassword = async e => {
-		e.preventDefault();
-		if (!email) {
-			setMessage({
-				type: 'error',
-				description: 'Please enter a valid email'
-			});
-			clearMessage();
-			return;
-		}
+	/* REMOVED FOR DEMO MODE */
+	// const recoverPassword = async e => {
+	// 	e.preventDefault();
+	// 	if (!email) {
+	// 		setMessage({
+	// 			type: 'error',
+	// 			description: 'Please enter a valid email'
+	// 		});
+	// 		clearMessage();
+	// 		return;
+	// 	}
 
-		try {
-			const response = await httpRequest({
-				method: 'post',
-				url: `${process.env.REACT_APP_API_URL}/forgotpassword`,
-				payload: {
-					email
-				}
-			});
+	// 	try {
+	// 		const response = await httpRequest({
+	// 			method: 'post',
+	// 			url: `${process.env.REACT_APP_API_URL}/forgotpassword`,
+	// 			payload: {
+	// 				email
+	// 			}
+	// 		});
 
-			if (response.type === 'error') {
-				setMessage({
-					type: 'error',
-					description: response.description
-				});
-				clearMessage();
-				return;
-			}
+	// 		if (response.type === 'error') {
+	// 			setMessage({
+	// 				type: 'error',
+	// 				description: response.description
+	// 			});
+	// 			clearMessage();
+	// 			return;
+	// 		}
 
-			setRequestSent(true);
-		} catch (error) {
-			console.log(error);
-			props.history.push('/500');
-		}
-	};
+	// 		setRequestSent(true);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 		props.history.push('/500');
+	// 	}
+	// };
 
 	if (requestSent) {
 		return (

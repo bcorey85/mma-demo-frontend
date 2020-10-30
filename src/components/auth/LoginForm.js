@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import useInputState from '../../hooks/useInputState';
@@ -6,8 +6,6 @@ import httpRequest from '../../utils/httpRequest';
 import useMessage from '../../hooks/useMessage';
 import MessageContainer from '../MessageContainer/MessageContainer';
 import { AuthContext } from '../../contexts/AuthContext';
-
-import useDemo from '../../hooks/useDemo';
 
 import './LoginForm.scss';
 
@@ -17,11 +15,7 @@ const LoginForm = props => {
 	const [ password, setPassword ] = useInputState('111111');
 	const [ message, setMessage, clearMessage ] = useMessage('');
 
-	useEffect(() => {
-		login();
-	}, []);
-
-	const login = async e => {
+	const login = useCallback(async e => {
 		if (e) {
 			e.preventDefault();
 		}
@@ -73,7 +67,14 @@ const LoginForm = props => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
+	}, []);
+
+	useEffect(
+		() => {
+			login();
+		},
+		[ login ]
+	);
 
 	return (
 		<form className='login-form'>
