@@ -87,6 +87,7 @@ const EditBidsForm = props => {
 		setDeleteBidsModalShowing(!deleteBidsModalShowing);
 	};
 
+	// eslint-disable-next-line
 	const deleteBids = async e => {
 		e.preventDefault();
 		try {
@@ -240,6 +241,7 @@ const EditBidsForm = props => {
 	};
 
 	//Send to DB
+	// eslint-disable-next-line
 	const editBids = async e => {
 		e.preventDefault();
 		const newBids = {

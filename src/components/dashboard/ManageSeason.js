@@ -26,47 +26,47 @@ const ManageSeason = ({
 		setSignupConfirmed(!signupConfirmed);
 	};
 
-	/* REMOVED FOR DEMO MODE */
-	// const signup = async () => {
-	// 	if (signupConfirmed === false) {
-	// 		setMessage({
-	// 			type: 'error',
-	// 			description: 'Please confirm signup before submitting'
-	// 		});
-	// 		clearMessage();
-	// 		return;
-	// 	}
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			url: `${process.env
-	// 				.REACT_APP_API_URL}/user/${auth.userId}/season/${leagueState
-	// 				.current.activeSeason}/signup`,
-	// 			method: 'post',
-	// 			token: auth.token
-	// 		});
+	// eslint-disable-next-line
+	const signup = async () => {
+		if (signupConfirmed === false) {
+			setMessage({
+				type: 'error',
+				description: 'Please confirm signup before submitting'
+			});
+			clearMessage();
+			return;
+		}
+		try {
+			const response = await httpRequest({
+				url: `${process.env
+					.REACT_APP_API_URL}/user/${auth.userId}/season/${leagueState
+					.current.activeSeason}/signup`,
+				method: 'post',
+				token: auth.token
+			});
 
-	// 		if (response.type === 'error') {
-	// 			setMessage({
-	// 				type: response.type,
-	// 				description: response.description
-	// 			});
-	// 			clearMessage();
+			if (response.type === 'error') {
+				setMessage({
+					type: response.type,
+					description: response.description
+				});
+				clearMessage();
 
-	// 			return;
-	// 		}
+				return;
+			}
 
-	// 		setMessage({
-	// 			type: 'success',
-	// 			description: response.data.message
-	// 		});
+			setMessage({
+				type: 'success',
+				description: response.data.message
+			});
 
-	// 		// Trigger state refresh on signup
-	// 		setSignedUp(true);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		// props.history.push('/500');
-	// 	}
-	// };
+			// Trigger state refresh on signup
+			setSignedUp(true);
+		} catch (error) {
+			console.log(error);
+			// props.history.push('/500');
+		}
+	};
 
 	const calculateStatTotals = () => {
 		const cards = seasonCardStats.map(card => card.cardNumber);

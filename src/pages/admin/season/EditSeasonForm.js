@@ -67,6 +67,7 @@ const EditSeasonForm = props => {
 		setModalShowing(!modalShowing);
 	};
 
+	// eslint-disable-next-line
 	const deleteSeason = async e => {
 		e.preventDefault();
 		httpDelete(
@@ -81,6 +82,7 @@ const EditSeasonForm = props => {
 		);
 	};
 
+	// eslint-disable-next-line
 	const updateSeason = async e => {
 		e.preventDefault();
 		const seasonUpdate = {

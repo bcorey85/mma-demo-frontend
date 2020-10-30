@@ -119,81 +119,79 @@ const SendEmail = props => {
 		}
 	};
 
-	/* REMOVED FOR DEMO MODE */
+	// eslint-disable-next-line
+	const handleDeleteUser = async () => {
+		try {
+			const response = await httpRequest({
+				method: 'delete',
+				url: `${process.env
+					.REACT_APP_API_URL}/admin/user/${selectedUser}`,
+				token: auth.token
+			});
 
-	// const handleDeleteUser = async () => {
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'delete',
-	// 			url: `${process.env
-	// 				.REACT_APP_API_URL}/admin/user/${selectedUser}`,
-	// 			token: auth.token
-	// 		});
+			if (response && response.type === 'error') {
+				setMessage({
+					type: 'error',
+					description: response.type.description
+				});
+				clearMessage();
+				return;
+			}
 
-	// 		if (response && response.type === 'error') {
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: response.type.description
-	// 			});
-	// 			clearMessage();
-	// 			return;
-	// 		}
+			setMessage({
+				type: 'success',
+				description: 'User deleted successfully'
+			});
+			clearMessage();
+			setSelectedUserData({});
+			getData();
+		} catch (error) {
+			console.log(error);
+			props.history.push('/500');
+		}
+	};
 
-	// 		setMessage({
-	// 			type: 'success',
-	// 			description: 'User deleted successfully'
-	// 		});
-	// 		clearMessage();
-	// 		setSelectedUserData({});
-	// 		getData();
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		props.history.push('/500');
-	// 	}
-	// };
+	// eslint-disable-next-line
+	const handleEditUser = async () => {
+		const payload = {
+			firstName,
+			fightName,
+			lastName
+		};
 
-	/* REMOVED FOR DEMO MODE */
+		try {
+			const response = await httpRequest({
+				method: 'put',
+				url: `${process.env
+					.REACT_APP_API_URL}/admin/user/${selectedUser}`,
+				token: auth.token,
+				payload: payload
+			});
 
-	// const handleEditUser = async () => {
-	// 	const payload = {
-	// 		firstName,
-	// 		fightName,
-	// 		lastName
-	// 	};
+			if (response && response.type === 'error') {
+				setMessage({
+					type: 'error',
+					description: response.type.description
+				});
+				clearMessage();
+				return;
+			}
 
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'put',
-	// 			url: `${process.env
-	// 				.REACT_APP_API_URL}/admin/user/${selectedUser}`,
-	// 			token: auth.token,
-	// 			payload: payload
-	// 		});
-
-	// 		if (response && response.type === 'error') {
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: response.type.description
-	// 			});
-	// 			clearMessage();
-	// 			return;
-	// 		}
-
-	// 		setMessage({
-	// 			type: 'success',
-	// 			description: 'User edited successfully'
-	// 		});
-	// 		clearMessage();
-	// 		setSelectedUserData({});
-	// 		setFirstName('');
-	// 		setFightName('');
-	// 		setLastName('');
-	// 		getData();
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		props.history.push('/500');
-	// 	}
-	// };
+			setMessage({
+				type: 'success',
+				description: 'User edited successfully'
+			});
+			clearMessage();
+			setSelectedUserData({});
+			setFirstName('');
+			setFightName('');
+			setLastName('');
+			getData();
+		} catch (error) {
+			console.log(error);
+			props.history.push('/500');
+		}
+	};
 
 	const selectedUserFields = (
 		<React.Fragment>

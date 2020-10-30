@@ -57,6 +57,7 @@ const NewCardForm = props => {
 
 	let { seasonID } = props.match.params;
 
+	// eslint-disable-next-line
 	const createCard = async e => {
 		e.preventDefault();
 

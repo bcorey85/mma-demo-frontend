@@ -98,43 +98,42 @@ const ManageLeague = props => {
 		setShowBids(e.target.value);
 	};
 
-	/* REMOVED FOR DEMO MODE */
+	// eslint-disable-next-line
+	const handleSave = async () => {
+		const payload = {
+			activeSeason,
+			activeSeasonSignupOpen,
+			activeCard,
+			activeCardBidsOpen,
+			showBids
+		};
 
-	// const handleSave = async () => {
-	// 	const payload = {
-	// 		activeSeason,
-	// 		activeSeasonSignupOpen,
-	// 		activeCard,
-	// 		activeCardBidsOpen,
-	// 		showBids
-	// 	};
+		try {
+			const response = await httpRequest({
+				method: 'put',
+				url: `${process.env.REACT_APP_API_URL}/admin/league`,
+				token: auth.token,
+				payload
+			});
+			setMessage({
+				type: 'success',
+				description: response.data.message
+			});
 
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'put',
-	// 			url: `${process.env.REACT_APP_API_URL}/admin/league`,
-	// 			token: auth.token,
-	// 			payload
-	// 		});
-	// 		setMessage({
-	// 			type: 'success',
-	// 			description: response.data.message
-	// 		});
+			clearMessage();
+		} catch (error) {
+			console.log(error);
 
-	// 		clearMessage();
-	// 	} catch (error) {
-	// 		console.log(error);
-
-	// 		if (error.response) {
-	// 			console.log(error.response);
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: error.response.data.error
-	// 			});
-	// 			clearMessage();
-	// 		}
-	// 	}
-	// };
+			if (error.response) {
+				console.log(error.response);
+				setMessage({
+					type: 'error',
+					description: error.response.data.error
+				});
+				clearMessage();
+			}
+		}
+	};
 
 	if (isLoading) {
 		return <LoadingSpinner />;

@@ -24,6 +24,7 @@ const SendEmail = props => {
 		setActiveSeasonUsers(e.target.value);
 	};
 
+	// eslint-disable-next-line
 	const sendEmail = async e => {
 		e.preventDefault();
 

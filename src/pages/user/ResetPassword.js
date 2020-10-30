@@ -19,50 +19,50 @@ const ResetPassword = props => {
 
 	const { handleDemoClick } = useDemo(setMessage);
 
-	/* REMOVED FOR DEMO MODE */
-	// const resetPassword = async e => {
-	// 	e.preventDefault();
-	// 	const passwordValid = passwordUpdateValidate(password, confirmPassword);
+	// eslint-disable-next-line
+	const resetPassword = async e => {
+		e.preventDefault();
+		const passwordValid = passwordUpdateValidate(password, confirmPassword);
 
-	// 	if (passwordValid.type === 'error') {
-	// 		setMessage({
-	// 			type: 'error',
-	// 			description: passwordValid.description
-	// 		});
-	// 		clearMessage();
-	// 		return;
-	// 	}
+		if (passwordValid.type === 'error') {
+			setMessage({
+				type: 'error',
+				description: passwordValid.description
+			});
+			clearMessage();
+			return;
+		}
 
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'put',
-	// 			url: `${process.env
-	// 				.REACT_APP_API_URL}/resetpassword/${resetToken}`,
-	// 			payload: {
-	// 				password
-	// 			}
-	// 		});
+		try {
+			const response = await httpRequest({
+				method: 'put',
+				url: `${process.env
+					.REACT_APP_API_URL}/resetpassword/${resetToken}`,
+				payload: {
+					password
+				}
+			});
 
-	// 		if (response.type === 'error') {
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: response.description
-	// 			});
-	// 			clearMessage();
-	// 			return;
-	// 		}
+			if (response.type === 'error') {
+				setMessage({
+					type: 'error',
+					description: response.description
+				});
+				clearMessage();
+				return;
+			}
 
-	// 		auth.login(
-	// 			response.data.userId,
-	// 			response.data.token,
-	// 			response.data.isAdmin
-	// 		);
-	// 		props.history.push(`/user/${response.data.userId}`);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		props.history.push('/500');
-	// 	}
-	// };
+			auth.login(
+				response.data.userId,
+				response.data.token,
+				response.data.isAdmin
+			);
+			props.history.push(`/user/${response.data.userId}`);
+		} catch (error) {
+			console.log(error);
+			props.history.push('/500');
+		}
+	};
 
 	return (
 		<section className='forgot-password'>

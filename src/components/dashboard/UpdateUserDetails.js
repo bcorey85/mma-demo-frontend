@@ -27,71 +27,71 @@ const UpdateUserDetails = ({
 
 	const { handleDemoClick } = useDemo(setMessage);
 
-	/* REMOVED FOR DEMO MODE */
-	// const submitUserDetails = async e => {
-	// 	e.preventDefault();
-	// 	const inputState = {
-	// 		email,
-	// 		firstName,
-	// 		fightName,
-	// 		lastName,
-	// 		password,
-	// 		confirmPassword
-	// 	};
+	// eslint-disable-next-line
+	const submitUserDetails = async e => {
+		e.preventDefault();
+		const inputState = {
+			email,
+			firstName,
+			fightName,
+			lastName,
+			password,
+			confirmPassword
+		};
 
-	// 	if (password || confirmPassword) {
-	// 		const passwordValid = passwordUpdateValidate(
-	// 			password,
-	// 			confirmPassword
-	// 		);
+		if (password || confirmPassword) {
+			const passwordValid = passwordUpdateValidate(
+				password,
+				confirmPassword
+			);
 
-	// 		if (passwordValid.type === 'error') {
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: passwordValid.description
-	// 			});
-	// 			clearMessage();
-	// 			return;
-	// 		}
-	// 	}
+			if (passwordValid.type === 'error') {
+				setMessage({
+					type: 'error',
+					description: passwordValid.description
+				});
+				clearMessage();
+				return;
+			}
+		}
 
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'put',
-	// 			url: `${process.env.REACT_APP_API_URL}/user/${userData._id}`,
-	// 			token: auth.token,
-	// 			payload: {
-	// 				inputState
-	// 			}
-	// 		});
+		try {
+			const response = await httpRequest({
+				method: 'put',
+				url: `${process.env.REACT_APP_API_URL}/user/${userData._id}`,
+				token: auth.token,
+				payload: {
+					inputState
+				}
+			});
 
-	// 		if (response.type === 'error') {
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: response.description
-	// 			});
-	// 			clearMessage();
-	// 			return;
-	// 		}
+			if (response.type === 'error') {
+				setMessage({
+					type: 'error',
+					description: response.description
+				});
+				clearMessage();
+				return;
+			}
 
-	// 		auth.login(
-	// 			response.data.userId,
-	// 			response.data.token,
-	// 			response.data.isAdmin
-	// 		);
+			auth.login(
+				response.data.userId,
+				response.data.token,
+				response.data.isAdmin
+			);
 
-	// 		setMessage({
-	// 			type: 'success',
-	// 			description: 'User details update successful'
-	// 		});
-	// 		setTimeout(() => {
-	// 			setUpdateUserDetailsMode(false);
-	// 		}, 1000);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		history.push('/500');
-	// 	}
-	// };
+			setMessage({
+				type: 'success',
+				description: 'User details update successful'
+			});
+			setTimeout(() => {
+				setUpdateUserDetailsMode(false);
+			}, 1000);
+		} catch (error) {
+			console.log(error);
+			history.push('/500');
+		}
+	};
 
 	return (
 		<form className='update-user-details'>

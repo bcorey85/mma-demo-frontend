@@ -18,42 +18,42 @@ const NewSeasonForm = props => {
 
 	const { handleDemoClick } = useDemo(setMessage);
 
-	/* REMOVED FOR DEMO MODE */
-	// const createSeason = async e => {
-	// 	e.preventDefault();
-	// 	//Stop submit if missing required fields
-	// 	if (!seasonNumber) {
-	// 		setMessage({
-	// 			type: 'error',
-	// 			description: 'Required input is empty - Please check.'
-	// 		});
-	// 		clearMessage();
-	// 		return;
-	// 	}
+	// eslint-disable-next-line
+	const createSeason = async e => {
+		e.preventDefault();
+		//Stop submit if missing required fields
+		if (!seasonNumber) {
+			setMessage({
+				type: 'error',
+				description: 'Required input is empty - Please check.'
+			});
+			clearMessage();
+			return;
+		}
 
-	// 	try {
-	// 		const response = await httpRequest({
-	// 			method: 'post',
-	// 			url: `${process.env.REACT_APP_API_URL}/admin/season/`,
-	// 			payload: { seasonNumber },
-	// 			token: auth.token
-	// 		});
+		try {
+			const response = await httpRequest({
+				method: 'post',
+				url: `${process.env.REACT_APP_API_URL}/admin/season/`,
+				payload: { seasonNumber },
+				token: auth.token
+			});
 
-	// 		console.log(response);
+			console.log(response);
 
-	// 		props.history.push('/admin/dashboard');
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		if (error.response) {
-	// 			console.log(error.response);
-	// 			setMessage({
-	// 				type: 'error',
-	// 				description: error.response.data.error
-	// 			});
-	// 			clearMessage();
-	// 		}
-	// 	}
-	// };
+			props.history.push('/admin/dashboard');
+		} catch (error) {
+			console.log(error);
+			if (error.response) {
+				console.log(error.response);
+				setMessage({
+					type: 'error',
+					description: error.response.data.error
+				});
+				clearMessage();
+			}
+		}
+	};
 
 	return (
 		<main className='main-content--fw'>

@@ -15,59 +15,62 @@ const LoginForm = props => {
 	const [ password, setPassword ] = useInputState('111111');
 	const [ message, setMessage, clearMessage ] = useMessage('');
 
-	const login = useCallback(async e => {
-		if (e) {
-			e.preventDefault();
-		}
+	const login = useCallback(
+		async e => {
+			if (e) {
+				e.preventDefault();
+			}
 
-		const inputs = [ email, password ];
+			const inputs = [ email, password ];
 
-		// Check blank inputs
-		if (inputs.includes('')) {
-			//Error handling
-			setMessage({
-				type: 'error',
-				description: 'Please check required inputs'
-			});
-			clearMessage();
-			return;
-		}
-
-		const payload = {
-			email,
-			password
-		};
-
-		// Make signup request
-		try {
-			const response = await httpRequest({
-				method: 'post',
-				url: `${process.env.REACT_APP_API_URL}/login`,
-				token: null,
-				payload
-			});
-
-			// Error handling
-			if (response && response.type === 'error') {
+			// Check blank inputs
+			if (inputs.includes('')) {
+				//Error handling
 				setMessage({
-					type: response.type,
-					description: response.description
+					type: 'error',
+					description: 'Please check required inputs'
 				});
 				clearMessage();
 				return;
 			}
 
-			auth.login(
-				response.data.userId,
-				response.data.token,
-				response.data.isAdmin
-			);
+			const payload = {
+				email,
+				password
+			};
 
-			props.history.push(`/user/${response.data.userId}`);
-		} catch (error) {
-			console.log(error);
-		}
-	}, []);
+			// Make signup request
+			try {
+				const response = await httpRequest({
+					method: 'post',
+					url: `${process.env.REACT_APP_API_URL}/login`,
+					token: null,
+					payload
+				});
+
+				// Error handling
+				if (response && response.type === 'error') {
+					setMessage({
+						type: response.type,
+						description: response.description
+					});
+					clearMessage();
+					return;
+				}
+
+				auth.login(
+					response.data.userId,
+					response.data.token,
+					response.data.isAdmin
+				);
+
+				props.history.push(`/user/${response.data.userId}`);
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		[ auth, clearMessage, email, password, props.history, setMessage ]
+	);
 
 	useEffect(
 		() => {

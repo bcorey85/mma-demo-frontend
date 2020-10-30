@@ -76,6 +76,7 @@ const EditCardForm = props => {
 		setDeleteCardModalShowing(!deleteCardModalShowing);
 	};
 
+	// eslint-disable-next-line
 	const deleteCard = async e => {
 		e.preventDefault();
 		try {
@@ -102,6 +103,7 @@ const EditCardForm = props => {
 		}
 	};
 
+	// eslint-disable-next-line
 	const updateCard = async e => {
 		e.preventDefault();
 		const updatedCard = {
